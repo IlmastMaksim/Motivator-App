@@ -9,8 +9,6 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String change;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
