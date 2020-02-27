@@ -12,6 +12,7 @@ public class RunData {
     }
 
     private RunData() {
+        // test data
         runs = new ArrayList<Run>();
         runs.add(new Run(26, 2, 2020, 2050, 10));
         runs.add(new Run(27, 2, 2020, 2080, 11));

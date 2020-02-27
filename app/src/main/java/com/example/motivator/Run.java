@@ -5,7 +5,7 @@ public class Run {
     private int month;
     private int year;
     private int distance; // distance is stored in meters
-    private float time;  // time is stored in minutes format
+    private float time;  // time is stored in minutes
 
     public Run(int day, int month, int year, int distance, float time) {
         this.day = day;
@@ -19,9 +19,7 @@ public class Run {
         return this.day;
     }
 
-    public int getMonth() {
-        return this.month;
-    }
+    public int getMonth() { return this.month; }
 
     public int getYear() {
         return this.year;
