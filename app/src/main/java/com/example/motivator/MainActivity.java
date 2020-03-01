@@ -15,14 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Set home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
-
-        // Perform ItemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -40,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                 }
-
                 return false;
             }
         });
