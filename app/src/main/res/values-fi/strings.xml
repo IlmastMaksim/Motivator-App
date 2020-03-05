@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Motivator</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Päävalikko</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Ilmoitukset</string>
+    <string name="home">Päävalikko</string>
+    <string name="welcome">Tervetuloa</string>
+    <string name="measurements">Määritä mitat</string>
+    <string name="weight">paino</string>
+    <string name="height">pituus</string>
+    <string name="waist">vyötärönympärys</string>
+    <string name="submit">Lähetä</string>
+    <string name="changeLang">Vaihda kieli</string>
+</resources>
