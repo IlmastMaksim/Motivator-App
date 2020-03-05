@@ -15,15 +15,9 @@ public class Sport extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-
-        // Initialize and assign variable
+        setContentView(R.layout.activity_sport);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Set home selected
-        bottomNavigationView.setSelectedItemId(R.id.stats);
-
-        // Perform ItemSelectedListener
+        bottomNavigationView.setSelectedItemId(R.id.sport);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -41,7 +35,6 @@ public class Sport extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                 }
-
                 return false;
             }
         });

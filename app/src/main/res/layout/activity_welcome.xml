@@ -4,47 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sport">
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="212dp"
+        android:layout_height="105dp"
+        android:hint="@string/welcome"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998" />
 
     <Button
-        android:id="@+id/gymButton"
+        android:id="@+id/changeMyLang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="gymButton"
-        android:text="GYM"
-        android:textSize="24sp"
+        android:hint="@string/changeLang"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.837" />
 
     <Button
-        android:id="@+id/runButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="runButton"
-        android:text="RUN"
-        android:textSize="24sp"
+        android:id="@+id/nextButton"
+        android:layout_width="135dp"
+        android:layout_height="83dp"
+        android:background="@drawable/arrowbutton"
+        android:onClick="nextButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gymButton"
-        app:layout_constraintVertical_bias="0.225" />
-
-    <Button
-        android:id="@+id/arrayButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="arrayButton"
-        android:text="Array"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gymButton"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
 </androidx.constraintlayout.widget.ConstraintLayout>

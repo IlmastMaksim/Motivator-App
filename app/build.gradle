@@ -26,4 +26,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.material:material:1.0.0'
     implementation files('libs/gson-2.8.6.jar')
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Motivator</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">индекс</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="home">индекс</string>
+    <string name="welcome">желанный</string>
+    <string name="measurements">Настройте свои измерения</string>
+    <string name="weight">вес</string>
+    <string name="height">высота</string>
+    <string name="waist">Талия</string>
+    <string name="submit">Разместить</string>
+    <string name="changeLang">Вайхда Кили</string>
+</resources>
