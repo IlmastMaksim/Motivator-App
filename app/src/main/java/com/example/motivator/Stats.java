@@ -68,8 +68,8 @@ public class Stats extends AppCompatActivity {
                 .yLabel(true)
                 .yStroke((Stroke) null, null, null, (String) null, (String) null);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-        cartesian.title("Exercise Records: Outdoor Run");
-        cartesian.yAxis(0).title("Running distance (meters)");
+        cartesian.title("Outdoor Run");
+        cartesian.yAxis(0).title("Distance (meters)");
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
         List<DataEntry> dataSet = this.getDataSet();
         Set set = Set.instantiate();
