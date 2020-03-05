@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,11 +23,11 @@ public class Sport extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.sport:
+                        startActivity(new Intent(getApplicationContext()
+                                , Sport.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.stats:
-                        startActivity(new Intent(getApplicationContext()
-                                , Stats.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
@@ -37,5 +38,21 @@ public class Sport extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    public void gymButton(View view) {
+        Intent gymIntent = new Intent(this, GymActivity.class);
+        startActivity(gymIntent);
+    }
+
+    public void runButton(View view) {
+        Intent runIntent = new Intent(this, Run.class);
+        startActivity(runIntent);
+    }
+
+    public void arrayButton(View view) {
+        Intent runIntent = new Intent(this, TestListView.class);
+        startActivity(runIntent);
     }
 }

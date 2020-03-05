@@ -3,10 +3,8 @@
 
     <item
         android:id="@+id/sport"
-        android:title="Sport"
         android:icon="@drawable/ic_run_foreground"
-        />
-
+        android:title="Sport" />
     <item
         android:id="@+id/home"
         android:title="Home"
