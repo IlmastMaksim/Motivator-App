@@ -1,10 +1,12 @@
 package com.example.motivator;
 
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RunData {
-    private List<Run> runs;
+    private List<CustomDataEntry> runs;
     private static final RunData ourInstance = new RunData();
 
     public static RunData getInstance() {
@@ -13,17 +15,24 @@ public class RunData {
 
     private RunData() {
         // test data
-        runs = new ArrayList<Run>();
-        runs.add(new Run(26, 2, 2020, 2050, 10));
-        runs.add(new Run(27, 2, 2020, 2080, 11));
-        runs.add(new Run(28, 2, 2020, 2030, 9));
+        runs = new ArrayList<>();
+        runs.add(new CustomDataEntry("25.02.2020", 2030, 9));
+        runs.add(new CustomDataEntry("26.02.2020", 2080, 11));
+        runs.add(new CustomDataEntry("28.02.2020", 2050, 8));
     }
 
-    public List<Run> getRuns() {
+    public List<CustomDataEntry> getRuns() {
         return runs;
     }
 
-    public Run getRun(int index) {
+    public CustomDataEntry getRun(int index) {
         return runs.get(index);
+    }
+
+    private class CustomDataEntry extends ValueDataEntry {
+        CustomDataEntry(String date, Number distance, Number time) {
+            super(date, distance);
+            setValue("time", time);
+        }
     }
 }
