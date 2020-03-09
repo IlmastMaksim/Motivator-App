@@ -1,12 +1,15 @@
 package com.example.motivator;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
-//import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Cartesian;
 import com.anychart.core.cartesian.series.Line;
 import com.anychart.data.Mapping;
@@ -15,22 +18,17 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Stats extends AppCompatActivity {
+public class StatsChart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stats);
+        setContentView(R.layout.activity_stats_chart);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.stats);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,11 +37,11 @@ public class Stats extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.sport:
                         startActivity(new Intent(getApplicationContext()
-                                , Sport.class));
+                                , SportActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.stats:
-                       return true;
+                        return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
                                 ,MainActivity.class));
@@ -53,11 +51,14 @@ public class Stats extends AppCompatActivity {
                 return false;
             }
         });
-
         this.drawChart();
     }
 
     private void drawChart() {
+
+        String title = "Gym activity";
+        String yAxisTitle = "Distance (meters)";
+
         AnyChartView anyChartView = findViewById(R.id.any_chart_view);
         anyChartView.setProgressBar(findViewById(R.id.progress_bar));
         Cartesian cartesian = AnyChart.line();
@@ -90,7 +91,7 @@ public class Stats extends AppCompatActivity {
     }
 
     private List<DataEntry> getDataSet() {
-        RunData runData = RunData.getInstance();
+        RunChartData runData = RunChartData.getInstance();
         List<DataEntry> dataSet =  new ArrayList<>();
         dataSet.addAll(runData.getRuns());
         return dataSet;

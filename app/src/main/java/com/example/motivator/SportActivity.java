@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Sport extends AppCompatActivity {
+public class SportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,11 @@ public class Sport extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.sport:
-                        startActivity(new Intent(getApplicationContext()
-                                , Sport.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.stats:
+                        startActivity(new Intent(getApplicationContext()
+                                , StatsActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
@@ -47,7 +47,7 @@ public class Sport extends AppCompatActivity {
     }
 
     public void runButton(View view) {
-        Intent runIntent = new Intent(this, Run.class);
+        Intent runIntent = new Intent(this, RunActivity.class);
         startActivity(runIntent);
     }
 

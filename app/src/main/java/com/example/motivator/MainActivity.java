@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -23,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.sport:
                         startActivity(new Intent(getApplicationContext()
-                                    , Sport.class));
+                                    , SportActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.stats:
                         startActivity(new Intent(getApplicationContext()
-                                , Stats.class));
+                                , StatsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:

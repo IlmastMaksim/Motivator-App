@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.motivator">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".PrivacyPolicyActivity"></activity>
         <activity android:name=".MeasurementsActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".Stats" />
-        <activity android:name=".Sport" />
+        <activity android:name=".GymActivity"
+            android:parentActivityName=".SportActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SportActivity" />
+        </activity>
+        <activity android:name=".RunActivity"
+            android:parentActivityName=".SportActivity">
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".SportActivity" />
+        </activity>
+        <activity android:name=".StatsChart"
+            android:parentActivityName=".StatsCategories">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StatsCategories" />
+        </activity>
+        <activity android:name=".StatsCategories"
+            android:parentActivityName=".StatsActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StatsActivity" />
+        </activity>
+        <activity android:name=".StatsActivity" />
+        <activity android:name=".SportActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

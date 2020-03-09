@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsActivity">
+    tools:context=".StatsChart">
 
     <ListView
-        android:id="@+id/chart_category"
+        android:id="@+id/stats_categories"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginStart="1dp"

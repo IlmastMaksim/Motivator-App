@@ -5,15 +5,15 @@ import com.anychart.chart.common.dataentry.ValueDataEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RunData {
+public class RunChartData {
     private List<CustomDataEntry> runs;
-    private static final RunData ourInstance = new RunData();
+    private static final RunChartData ourInstance = new RunChartData();
 
-    public static RunData getInstance() {
+    public static RunChartData getInstance() {
         return ourInstance;
     }
 
-    private RunData() {
+    private RunChartData() {
         // test data
         runs = new ArrayList<>();
         runs.add(new CustomDataEntry("25.02.2020", 2030, 9));
