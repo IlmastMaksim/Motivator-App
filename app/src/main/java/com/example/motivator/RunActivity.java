@@ -1,32 +1,25 @@
 package com.example.motivator;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import android.content.SharedPreferences;
-
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 public class RunActivity extends AppCompatActivity {
+
+    private Set<String> _setFromPrefs;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -54,13 +47,9 @@ public class RunActivity extends AppCompatActivity {
         String time =  timeET.getText().toString();
 
 
-        ArrayList<String> finalResult = new ArrayList<>();
+        String finalResult = formattedDate + " " + runCategory + " " + distance + " " + time;
 
-        finalResult.add(runCategory);
-        finalResult.add(distance);
-        finalResult.add(time);
-
-        this.saveToSP(finalResult, formattedDate);
+        this.saveToPrefs(finalResult);
         this.clearText();
     }
 
@@ -72,19 +61,26 @@ public class RunActivity extends AppCompatActivity {
         timeET.setText("");
     }
 
-    private void saveToSP(ArrayList res, String key) {
+    private void saveToPrefs(String res) {
+        this.getSetFromPrefs();
         SharedPreferences sharedPreferences = getSharedPreferences("RUNNING_DATA", MODE_PRIVATE);
         SharedPreferences.Editor editor;
-        Gson gson = new Gson();
-        String json = gson.toJson(res);
         editor = sharedPreferences.edit();
-        editor.putString(key, json);
+        _setFromPrefs.add(res);
+        editor.putStringSet("RUNNING_DATA", _setFromPrefs);
         editor.apply();
+    }
+
+    public void getSetFromPrefs()
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences("RUNNING_DATA", MODE_PRIVATE);
+        Set<String> someSets = sharedPreferences.getStringSet("RUNNING_DATA", new HashSet<String>() );
+        _setFromPrefs = new HashSet<>(someSets);
     }
 
     private String getDate() {
         Date myDate = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         return dateFormat.format(myDate);
     }
 

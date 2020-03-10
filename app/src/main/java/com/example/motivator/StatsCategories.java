@@ -17,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class StatsCategories extends AppCompatActivity {
+
+    public static final String EXTRA_MESSAGE = "com.example.motivator.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +46,10 @@ public class StatsCategories extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("adapterView", "onItemClick(" + i + ")");
-               // Intent intent = new Intent(StatsActivity.this, StatsCategories.class);
+                Intent intent = new Intent(StatsCategories.this, StatsChart.class);
                 String msg = Integer.toString(i);
-               // intent.putExtra(EXTRA_MESSAGE, msg);
-               // startActivity(intent);
+                intent.putExtra(EXTRA_MESSAGE, msg);
+                startActivity(intent);
             }
         });
 
@@ -74,4 +76,6 @@ public class StatsCategories extends AppCompatActivity {
             }
         });
     }
+
+
 }

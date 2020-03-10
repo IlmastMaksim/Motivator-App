@@ -1,63 +1,56 @@
 package com.example.motivator;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Cartesian;
 import com.anychart.core.cartesian.series.Line;
 import com.anychart.data.Mapping;
 import com.anychart.data.Set;
+import java.util.HashSet;
 import com.anychart.enums.Anchor;
 import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StatsChart extends AppCompatActivity {
+    List<CustomDataEntry> outdoorRuns;
+    List<CustomDataEntry> indoorRuns;
+    java.util.Set<String> _setFromPrefs;
+    SharedPreferences sharedPreferences = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats_chart);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.stats);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.sport:
-                        startActivity(new Intent(getApplicationContext()
-                                , SportActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.stats:
-                        return true;
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+        outdoorRuns= new ArrayList<>();
+        indoorRuns= new ArrayList<>();
+        sharedPreferences = getSharedPreferences("RUNNING_DATA", Activity.MODE_PRIVATE);
+        java.util.Set<String> someSets = this.sharedPreferences.getStringSet("RUNNING_DATA", new HashSet<String>() );
+        _setFromPrefs = new HashSet<>(someSets);
+        for (String temp : _setFromPrefs) { // 28.02.2002 outdoor 200 232 /
+            Log.d("STRING", temp);
+            String[] splitArray = temp.split("\\s+");
+            if (splitArray[2].equals("indoor")) {
+                indoorRuns.add(new CustomDataEntry(splitArray[0] + " " + splitArray[1], Integer.parseInt(splitArray[3]), Integer.parseInt(splitArray[4]) ));
+            } else {
+                outdoorRuns.add(new CustomDataEntry(splitArray[0] + " " + splitArray[1], Integer.parseInt(splitArray[3]), Integer.parseInt(splitArray[4]) ));
             }
-        });
+        }
         this.drawChart();
     }
-
     private void drawChart() {
-
-        String title = "Gym activity";
-        String yAxisTitle = "Distance (meters)";
 
         AnyChartView anyChartView = findViewById(R.id.any_chart_view);
         anyChartView.setProgressBar(findViewById(R.id.progress_bar));
@@ -91,9 +84,22 @@ public class StatsChart extends AppCompatActivity {
     }
 
     private List<DataEntry> getDataSet() {
-        RunChartData runData = RunChartData.getInstance();
         List<DataEntry> dataSet =  new ArrayList<>();
-        dataSet.addAll(runData.getRuns());
+        Intent prevActivity = getIntent();
+        String message = prevActivity.getStringExtra(StatsActivity.EXTRA_MESSAGE);
+        if (message.equals("0")) {
+            dataSet.addAll(indoorRuns);
+        } else {
+            dataSet.addAll(outdoorRuns);
+        }
         return dataSet;
+    }
+
+
+    public class CustomDataEntry extends ValueDataEntry {
+        CustomDataEntry(String date, Number distance, Number time) {
+            super(date, distance);
+            setValue("time", time);
+        }
     }
 }

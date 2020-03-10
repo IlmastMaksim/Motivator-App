@@ -36,7 +36,6 @@ public class StatsActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("adapterView", "onItemClick(" + i + ")");
                 Intent intent = new Intent(StatsActivity.this, StatsCategories.class);
                 String msg = Integer.toString(i);
                 intent.putExtra(EXTRA_MESSAGE, msg);

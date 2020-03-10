@@ -68,16 +68,17 @@
 
 
         <RadioButton
+            android:id="@+id/outdoor"
+            android:checked="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Outdoor" />
+
+        <RadioButton
             android:id="@+id/indoor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Indoor" />
-
-        <RadioButton
-            android:id="@+id/outdoor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Outdoor" />
 
     </RadioGroup>
 
