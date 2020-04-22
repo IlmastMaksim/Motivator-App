@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MeasurementsActivity extends AppCompatActivity {
 
@@ -14,8 +15,8 @@ public class MeasurementsActivity extends AppCompatActivity {
     }
 
     public void submitButton(View v) {
-        int typeHeight = Integer.parseInt(height.getText().toString());
-        int typeWeight = Integer.parseInt(weight.getText().toString());
-        int typeWaist = Integer.parseInt(waist.getText().toString());
+        TextView typeHeight = findViewById(R.id.heightText);
+        TextView typeWeight = findViewById(R.id.weightText);
+        TextView typeWaist = findViewById(R.id.waistText);
     }
 }

@@ -1,21 +1,12 @@
 package com.example.motivator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 
 public class GymActivity extends AppCompatActivity {
@@ -84,7 +75,7 @@ public class GymActivity extends AppCompatActivity {
         }
 
 
-        Intent applyIntent = new Intent(this, Sport.class);
+        Intent applyIntent = new Intent(this, SportActivity.class);
         startActivity(applyIntent);
     }
 }

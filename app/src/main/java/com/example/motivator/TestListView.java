@@ -30,8 +30,6 @@ public class TestListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testlistview);
 
-
-
         dataHolder = loadData();
         lv = findViewById(R.id.listView);
         lv.setAdapter(new ArrayAdapter<String>(
